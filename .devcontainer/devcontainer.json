@@ -13,6 +13,9 @@
     "5000": {
       "label": "Application",
       "onAutoForward": "openPreview"
+    },
+    "8080": {
+      "label": "Vue Frontend"
     }
   },
   "customizations": {

@@ -28,6 +28,7 @@
     </div>
 </template>
 <script>
+import axios from 'axios';
 export default {
     name: 'Login',
     data(){
@@ -44,9 +45,16 @@ export default {
         }
     },
     methods:{
-        getData() 
+        getData()
         {
-            console.log();
+            axios.post('http://127.0.0.1:5000/api/data',this.answer)
+            .then(response => {
+                console.log('Data submitted',response.data);
+                window.location.href = '/feedback';
+            })
+            .catch(error => {
+                console.log('Error',error);
+            });
         }
     }
 }
