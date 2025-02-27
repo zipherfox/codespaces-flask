@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
+    <h1>{{ message }}</h1>
     <p>
       For a guide and recipes on how to configure / customize this project,<br>
       check out the
@@ -32,11 +32,20 @@
 
 <script>
 export default {
-  name: 'HelloWorld',
-  props: {
-    msg: String
+  data() {
+    return {
+      message: 'Loading...'
+    };
+  },
+  mounted() {
+    fetch('http://127.0.0.1:5000/api/data')
+      .then(response => response.json())
+      .then(data => {
+        this.message = data.message;
+      })
+      .catch(error => console.error('Error:', error));
   }
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
